@@ -118,10 +118,10 @@ offset_bottom = -24.0
 grow_horizontal = 0
 grow_vertical = 0
 focus_mode = 0
-shortcut_in_tooltip = false
 action_mode = 0
 shortcut = SubResource("Shortcut_msvqx")
 shortcut_feedback = false
+shortcut_in_tooltip = false
 text = "Speed: ???"
 script = ExtResource("2")
 

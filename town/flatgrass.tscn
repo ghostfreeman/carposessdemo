@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=3 uid="uid://c6rms32bswgjy"]
+
+[ext_resource type="Script" path="res://spedometer.gd" id="2_bii04"]
+[ext_resource type="Environment" uid="uid://cuvs67826w51u" path="res://default_env.tres" id="3_d4nuf"]
+[ext_resource type="Texture2D" uid="uid://b2g4dq0w72e68" path="res://town/materials/grass.webp" id="4_cbsvm"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_a4722"]
+action = &"cycle_speedometer_unit"
+
+[sub_resource type="Shortcut" id="Shortcut_msvqx"]
+events = [SubResource("InputEventAction_a4722")]
+
+[sub_resource type="BoxMesh" id="BoxMesh_x3c0g"]
+size = Vector3(4096, 1, 4096)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ud3l"]
+albedo_texture = ExtResource("4_cbsvm")
+roughness = 0.8
+uv1_scale = Vector3(128, 64, 1)
+texture_filter = 5
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_gearx"]
+data = PackedVector3Array(-2048, 0.5, 2048, 2048, 0.5, 2048, -2048, -0.5, 2048, 2048, 0.5, 2048, 2048, -0.5, 2048, -2048, -0.5, 2048, 2048, 0.5, -2048, -2048, 0.5, -2048, 2048, -0.5, -2048, -2048, 0.5, -2048, -2048, -0.5, -2048, 2048, -0.5, -2048, 2048, 0.5, 2048, 2048, 0.5, -2048, 2048, -0.5, 2048, 2048, 0.5, -2048, 2048, -0.5, -2048, 2048, -0.5, 2048, -2048, 0.5, -2048, -2048, 0.5, 2048, -2048, -0.5, -2048, -2048, 0.5, 2048, -2048, -0.5, 2048, -2048, -0.5, -2048, 2048, 0.5, 2048, -2048, 0.5, 2048, 2048, 0.5, -2048, -2048, 0.5, 2048, -2048, 0.5, -2048, 2048, 0.5, -2048, -2048, -0.5, 2048, 2048, -0.5, 2048, -2048, -0.5, -2048, 2048, -0.5, 2048, 2048, -0.5, -2048, -2048, -0.5, -2048)
+
+[node name="TownScene" type="Node3D"]
+
+[node name="InstancePos" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -5.15607, -40)
+
+[node name="Spedometer" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = -63.0
+offset_right = 70.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+action_mode = 0
+shortcut = SubResource("Shortcut_msvqx")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "???"
+script = ExtResource("2_bii04")
+speed_unit = 1
+
+[node name="Back" type="Button" parent="."]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 92.0
+offset_bottom = 56.0
+text = "« Back"
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_d4nuf")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.506501, -0.706305, -0.494561, -4.63342e-08, -0.573577, 0.819152, -0.86224, -0.414901, -0.290517, 11.0084, 12.3453, -31.3148)
+light_energy = 1.45
+shadow_enabled = true
+shadow_bias = 0.015
+shadow_blur = 1.5
+directional_shadow_mode = 0
+directional_shadow_max_distance = 80.0
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, -5.86, 429.776)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_x3c0g")
+surface_material_override/0 = SubResource("StandardMaterial3D_0ud3l")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_gearx")
+
+[connection signal="pressed" from="Spedometer" to="Spedometer" method="_on_spedometer_pressed"]

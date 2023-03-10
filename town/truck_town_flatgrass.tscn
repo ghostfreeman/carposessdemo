@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1ujksxexx7v2"]
+
+[ext_resource type="PackedScene" uid="uid://dfdgytsvtqxwv" path="res://town/truck_town.glb" id="1_ygrvl"]
+
+[node name="TruckTown" instance=ExtResource("1_ygrvl")]

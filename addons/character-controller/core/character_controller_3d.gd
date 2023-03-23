@@ -196,7 +196,7 @@ var _direction_base_node : Node3D
 @onready var swim_ability: SwimAbility3D = get_node(NodePath("Swim Ability 3D"))
 
 ## Interact collider
-@onready var interact_collider: RayCast3D = get_node(NodePath("Interact Collider"))
+@onready var interact_collider: RayCast3D = get_node(NodePath("Head/Interact Collider"))
 
 ## Stores normal speed
 @onready var _normal_speed: int = speed

@@ -104,3 +104,6 @@ func _physics_process(delta: float):
 	steering = move_toward(steering, _steer_target, STEER_SPEED * delta)
 
 	previous_speed = linear_velocity.length()
+
+func interact():
+	print("Interacted with car")

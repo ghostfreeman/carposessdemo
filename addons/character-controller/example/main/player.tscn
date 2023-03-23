@@ -19,7 +19,11 @@ input_interact = "interact"
 underwater_env = ExtResource("3_dxksd")
 
 [node name="Interact Collider" type="RayCast3D" parent="Head" index="1"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0147747, -0.306024)
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0.0147747, -0.306024)
 debug_shape_custom_color = Color(0.713726, 0.945098, 0, 1)
+debug_shape_thickness = 5
 
 [node name="Player Audios" parent="." index="9" instance=ExtResource("4_ux8kv")]
+
+[node name="AudioListener3D" type="AudioListener3D" parent="." index="11"]
+current = true

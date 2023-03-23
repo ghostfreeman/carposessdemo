@@ -52,7 +52,7 @@ point_count = 2
 
 [node name="CarBase" type="Node3D"]
 
-[node name="Body" type="VehicleBody3D" parent="."]
+[node name="Body" type="VehicleBody3D" parent="." groups=["interactive"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00169557, 0.222867, -0.0955184)
 center_of_mass_mode = 1
 physics_material_override = SubResource("PhysicsMaterial_l7i2k")
@@ -175,7 +175,6 @@ lower_fade = 1.0
 cull_mask = 1048573
 
 [node name="AudioListener3D" type="AudioListener3D" parent="Body"]
-current = true
 
 [node name="InteriorCameraPosition" type="Marker3D" parent="Body"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.9, 0.3)

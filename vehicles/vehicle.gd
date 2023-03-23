@@ -3,6 +3,7 @@ extends VehicleBody3D
 const STEER_SPEED = 1.5
 const STEER_LIMIT = 0.4
 
+@export var is_vehicle_active := false
 @export var engine_force_value := 40.0
 @export_range(0.0, 1.0) var handbrake_force_value := 0.5
 
@@ -13,6 +14,9 @@ var _steer_target := 0.0
 
 
 func _physics_process(delta: float):
+	if !is_vehicle_active:
+		return
+	
 	var fwd_mps := (linear_velocity * transform.basis).x
 
 	_steer_target = Input.get_axis(&"turn_right", &"turn_left")

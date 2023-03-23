@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://c6rms32bswgjy"]
+[gd_scene load_steps=10 format=3 uid="uid://c6rms32bswgjy"]
 
 [ext_resource type="Script" path="res://spedometer.gd" id="2_bii04"]
 [ext_resource type="Environment" uid="uid://cuvs67826w51u" path="res://default_env.tres" id="3_d4nuf"]
 [ext_resource type="Texture2D" uid="uid://b2g4dq0w72e68" path="res://town/materials/grass.webp" id="4_cbsvm"]
+[ext_resource type="PackedScene" uid="uid://2oxdgu03lnbk" path="res://addons/character-controller/example/main/player.tscn" id="4_f1bdi"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_a4722"]
 action = &"cycle_speedometer_unit"
@@ -25,9 +26,11 @@ data = PackedVector3Array(-2048, 0.5, 2048, 2048, 0.5, 2048, -2048, -0.5, 2048, 
 [node name="TownScene" type="Node3D"]
 
 [node name="InstancePos" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -5.15607, -40)
+transform = Transform3D(0.821895, 0, 0, 0, 0.821895, 0, 0, 0, 0.821895, 14, -5.15607, -40)
 
 [node name="Spedometer" type="Button" parent="."]
+unique_name_in_owner = true
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -49,6 +52,7 @@ script = ExtResource("2_bii04")
 speed_unit = 1
 
 [node name="Back" type="Button" parent="."]
+visible = false
 offset_left = 24.0
 offset_top = 24.0
 offset_right = 92.0
@@ -77,5 +81,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_0ud3l")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_gearx")
+
+[node name="Player" parent="." instance=ExtResource("4_f1bdi")]
 
 [connection signal="pressed" from="Spedometer" to="Spedometer" method="_on_spedometer_pressed"]

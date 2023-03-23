@@ -14,6 +14,7 @@ func _process(_delta: float):
 func _load_scene(car_scene: PackedScene):
 	var car: Node3D = car_scene.instantiate()
 	car.name = "car"
+	#car.is_active = false
 	town = preload("res://town/flatgrass.tscn").instantiate()
 	town.get_node(^"InstancePos").add_child(car)
 	town.get_node(^"Spedometer").car_body = car.get_child(0)

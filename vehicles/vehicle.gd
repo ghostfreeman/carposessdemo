@@ -11,7 +11,7 @@ var previous_speed := linear_velocity.length()
 var _steer_target := 0.0
 
 @onready var desired_engine_pitch: float = $EngineSound.pitch_scale
-
+@onready var camera := $CameraBase/Camera3D
 
 func _physics_process(delta: float):
 	if !is_vehicle_active:
@@ -107,3 +107,19 @@ func _physics_process(delta: float):
 
 func interact():
 	print("Interacted with car")
+	
+	# Change Camera
+	camera.current = true
+	
+	# Posess Car
+	is_vehicle_active = !is_vehicle_active
+
+	# Unposess player
+	var scene_tree = get_parent().get_parent().get_parent().get_node("Player") # TODO use Signal
+	scene_tree.toggle_interact()
+	
+	# Remove Player Inherited Scene
+	scene_tree.queue_free()
+	
+	# TODO Toggle Car HUD
+	get_parent().get_parent().get_parent().get_node("Spedometer").show()

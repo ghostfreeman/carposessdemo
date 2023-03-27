@@ -25,6 +25,8 @@ class_name Player
 
 @export var underwater_env: Environment
 
+var is_player_active : bool = true
+
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -34,6 +36,9 @@ func _ready():
 
 
 func _physics_process(delta):
+	if !is_player_active:
+		return
+		
 	var is_valid_input := Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
 	
 	if is_valid_input:
@@ -53,7 +58,12 @@ func _physics_process(delta):
 		## to process, as we still need to calculate gravity and collisions.
 		move(delta)
 
-
+func toggle_interact() -> void:
+	print("Toggling player interact")
+	is_player_active = !is_player_active
+	camera.current = false
+	
+	
 func _input(event: InputEvent) -> void:
 	# Mouse look (only if the mouse is captured).
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:

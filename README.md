@@ -1,7 +1,6 @@
-# Truck Town
+# Car Posess
 
-This is a demo implementing different types of trucks of
-varying complexity using vehicle physics.
+This is a demo of being able to take over a car at de
 
 Controls:
 
@@ -30,6 +29,5 @@ node, and the tow truck is tried together using a chain made of
 nodes which are pinned together using
 [`PinJoint`](https://docs.godotengine.org/en/latest/classes/class_pinjoint.html) nodes.
 
-## Screenshots
-
-![Screenshot](screenshots/truck_town.webp)
+## Licenses
+Licensed under the same MIT license as the original TruckTown project.

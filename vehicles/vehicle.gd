@@ -115,6 +115,7 @@ func interact():
 	# Check if player is posessing car already
 	if is_vehicle_active:
 		print("Player already posesses the vehicle")
+		#free_car()
 
 	# Change Camera
 	camera.current = true

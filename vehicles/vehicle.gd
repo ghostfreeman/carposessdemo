@@ -12,6 +12,7 @@ var _steer_target := 0.0
 
 @onready var desired_engine_pitch: float = $EngineSound.pitch_scale
 @onready var camera := $CameraBase/Camera3D
+@onready var player_spawn : Marker3D = $PlayerSpawn
 
 func _physics_process(delta: float):
 	if !is_vehicle_active:
@@ -100,6 +101,9 @@ func _physics_process(delta: float):
 			brake = 0
 	else:
 		brake = 0
+	
+	if Input.is_action_pressed(&"interact"):
+		interact()
 		
 	steering = move_toward(steering, _steer_target, STEER_SPEED * delta)
 
@@ -108,6 +112,10 @@ func _physics_process(delta: float):
 func interact():
 	print("Interacted with car")
 	
+	# Check if player is posessing car already
+	if is_vehicle_active:
+		print("Player already posesses the vehicle")
+
 	# Change Camera
 	camera.current = true
 	
@@ -121,5 +129,23 @@ func interact():
 	# Remove Player Inherited Scene
 	scene_tree.queue_free()
 	
-	# TODO Toggle Car HUD
+	# Toggle Car HUD
 	get_parent().get_parent().get_parent().get_node("Spedometer").show()
+	
+func free_car():
+	print("Freeing player from car")
+	return
+	# TODO Create new player instance at Marker3D
+	var player_scene = preload("res://addons/character-controller/example/main/player.tscn")
+	player_scene = player_scene.instantiate()
+	player_scene.name = "player"
+	player_spawn.add_child(player_scene)
+	
+	# Unposess car
+	is_vehicle_active = !is_vehicle_active
+	
+	# TODO Posess player
+	player_spawn.current = true
+	
+	# Toggle off Car HUD
+	get_parent().get_parent().get_parent().get_node("Spedometer").hide()

@@ -25,6 +25,8 @@ class_name Player
 
 @export var underwater_env: Environment
 
+@onready var collisionObj := $Collision
+
 var is_player_active : bool = true
 
 
@@ -60,8 +62,15 @@ func _physics_process(delta):
 
 func toggle_interact() -> void:
 	print("Toggling player interact")
-	is_player_active = !is_player_active
-	camera.current = false
+	
+	if is_player_active:
+		is_player_active = !is_player_active
+		collisionObj.disabled = true
+		camera.current = false
+	else:
+		is_player_active = !is_player_active
+		collisionObj.disabled = false
+		camera.current = true
 	
 	
 func _input(event: InputEvent) -> void:

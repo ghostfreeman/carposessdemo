@@ -149,13 +149,11 @@ func free_car():
 	player_scene.global_position = player_spawn.global_position
 	
 	# Unposess car
+	player_scene.toggle_interact()
 	is_vehicle_active = !is_vehicle_active
 	camera.current = false
-	player_scene.get_node("%Camera").current = true
 	
 	# Toggle off Car HUD
 	get_parent().get_parent().get_parent().get_node("Spedometer").hide()
-	
-	player_scene.is_player_active = true
 	player_scene.show()
 

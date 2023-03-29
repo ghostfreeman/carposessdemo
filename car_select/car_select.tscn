@@ -55,7 +55,7 @@ theme_override_colors/font_outline_color = Color(0.105882, 0.278431, 0.47451, 1)
 theme_override_constants/outline_size = 38
 theme_override_fonts/font = SubResource("FontVariation_hqcvw")
 theme_override_font_sizes/font_size = 64
-text = "Car Posess"
+text = "Car Drive"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="HBoxContainer/MiniVan" to="." method="_on_mini_van_pressed"]

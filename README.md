@@ -31,3 +31,5 @@ nodes which are pinned together using
 
 ## Licenses
 Licensed under the same MIT license as the original TruckTown project.
+
+The Character Controller is also licensed under the MIT license, viewable [on its original repository](https://github.com/ExpressoBits/character-controller)
